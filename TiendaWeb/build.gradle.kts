@@ -16,6 +16,8 @@ java {
 
 repositories {
 	mavenCentral()
+    maven {
+        url = uri("https://repo.maven.apache.org/maven2") }
 }
 
 dependencies {
@@ -30,7 +32,13 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
-    implementation("com.sun.xml.bind:jaxb-ri:4.0.5")
+
+    runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.4")
+
+    implementation("org.springframework.boot:spring-boot-starter-artemis")
+
+
+
 }
 
 tasks.withType<Test> {

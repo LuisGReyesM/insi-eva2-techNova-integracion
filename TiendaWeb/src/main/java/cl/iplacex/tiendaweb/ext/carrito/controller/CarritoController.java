@@ -5,6 +5,8 @@ import cl.iplacex.tiendaweb.ext.carrito.domain.CarritoImpl;
 import cl.iplacex.tiendaweb.ext.carrito.domain.LineaPedidoImpl;
 import cl.iplacex.tiendaweb.ext.carrito.domain.Pedido;
 import cl.iplacex.tiendaweb.ext.carrito.event.PedidoCompletadoEvent;
+import cl.iplacex.tiendaweb.integration.adapter.WebOrderIntegrationAdapter;
+import cl.iplacex.tiendaweb.integration.dto.WebOrderXml;
 import cl.iplacex.tiendaweb.service.CategoriaService;
 import cl.iplacex.tiendaweb.service.ProductoService;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
@@ -43,6 +46,20 @@ public class CarritoController {
         model.addAttribute("pedido", pedido);
         logger.info("Registrando venta de {} pesos, será enviada a {}", pedido.getTotal(), pedido.getDireccionDespacho().getComuna());
         applicationEventPublisher.publishEvent(new PedidoCompletadoEvent(pedido));
+
+
+
+        WebOrderXml xml = new WebOrderXml();
+        xml.setIdPedido(UUID.randomUUID().toString());
+        xml.setRutCliente(pedido.getComprador().getRut());
+        xml.setTotal(pedido.getTotal());
+
+        new WebOrderIntegrationAdapter().publish(xml);
+
+
+
+
+
         return "compra";
     }
 
