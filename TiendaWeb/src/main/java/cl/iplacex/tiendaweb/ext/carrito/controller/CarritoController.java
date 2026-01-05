@@ -56,10 +56,6 @@ public class CarritoController {
 
         new WebOrderIntegrationAdapter().publish(xml);
 
-
-
-
-
         return "compra";
     }
 

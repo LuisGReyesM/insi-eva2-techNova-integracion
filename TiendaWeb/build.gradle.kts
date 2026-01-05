@@ -35,6 +35,7 @@ dependencies {
 
     runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.4")
 
+
     implementation("org.springframework.boot:spring-boot-starter-artemis")
 
 
