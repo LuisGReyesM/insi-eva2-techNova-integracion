@@ -3,6 +3,10 @@ package cl.iplacex.tiendaweb.integration.dto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+/**
+ * DTO que representa una línea individual dentro del detalle del pedido.
+ * Relaciona un producto específico con la cantidad adquirida para la integración XML.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ItemXml {
 

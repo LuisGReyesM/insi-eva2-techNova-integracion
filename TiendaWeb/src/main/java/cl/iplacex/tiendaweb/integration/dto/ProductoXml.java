@@ -3,6 +3,10 @@ package cl.iplacex.tiendaweb.integration.dto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+/**
+ * DTO que representa la ficha técnica y comercial de un producto en formato XML.
+ * Contiene la información necesaria para identificar el artículo en los sistemas de inventario.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductoXml {
 

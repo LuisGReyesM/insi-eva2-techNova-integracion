@@ -3,6 +3,10 @@ package cl.iplacex.tiendaweb.integration.dto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+/**
+ * DTO que encapsula la información del cliente que realiza el pedido.
+ * Representa la sección de identidad del mensaje XML generado para la integración.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CompradorXml {
     private String nombre;
