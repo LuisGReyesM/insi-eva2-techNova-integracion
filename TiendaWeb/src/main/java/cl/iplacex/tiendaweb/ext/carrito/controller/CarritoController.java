@@ -54,6 +54,11 @@ public class CarritoController {
         xml.setRutCliente(pedido.getComprador().getRut());
         xml.setTotal(pedido.getTotal());
 
+        /* ============================================================
+         * CONEXIÓN CON EL ADAPTADOR DE INTEGRACIÓN
+         * Se instancia el adaptador y se invoca el método publish para
+         * iniciar el flujo de salida hacia los sistemas externos.
+         * ============================================================ */
         new WebOrderIntegrationAdapter().publish(xml);
 
         return "compra";
